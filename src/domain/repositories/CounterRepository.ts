@@ -1,5 +1,8 @@
 import Counter from 'domain/entities/Counter';
+import ICounterRepository from './ICounterRepository';
+import { injectable } from 'inversify'
 
+@injectable()
 export default class CounterRepository implements ICounterRepository {
     counter: Counter;
 
@@ -10,9 +13,4 @@ export default class CounterRepository implements ICounterRepository {
     decrement(): void {
         this.counter.value -= 1;
     }
-}
-
-interface ICounterRepository {
-    increment(): void;
-    decrement(): void;
 }

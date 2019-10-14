@@ -1,9 +1,13 @@
+import ICounterRepository from 'domain/repositories/ICounterRepository';
 import CounterRepository from 'domain/repositories/CounterRepository';
+import { inject } from 'inversify';
 
-export default class CounterIncrementing {
-    repository: CounterRepository;
+export default class CounterDecrementing {
+    repository: ICounterRepository;
 
-    constructor(_repository: CounterRepository) {
+    constructor(
+        @inject(CounterRepository) _repository: ICounterRepository
+    ) {
         this.repository = _repository;
     }
 
